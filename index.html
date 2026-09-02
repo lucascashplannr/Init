@@ -1,6 +1,545 @@
-<div>You have got pranked</div>
-dfsd
-fds
-fdsdsdfs
-fsd
-MARGERITTE
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Init — Le point de départ de vos projets</title>
+<meta name="description" content="Init met en place le socle de vos projets : structure, conventions et outillage, prêts dès la première commande.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-soft: #f7f7f9;
+    --text: #16161a;
+    --text-muted: #5f5f6b;
+    --border: #e6e6ec;
+    --accent: #4f46e5;
+    --accent-soft: #eef0fe;
+    --accent-contrast: #ffffff;
+    --radius: 12px;
+    --maxw: 1080px;
+    --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0e0e11;
+      --bg-soft: #16161b;
+      --text: #f2f2f5;
+      --text-muted: #a0a0ad;
+      --border: #26262e;
+      --accent: #8b8bf5;
+      --accent-soft: #1b1b2e;
+      --accent-contrast: #0e0e11;
+    }
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 { line-height: 1.2; letter-spacing: -0.02em; margin: 0; }
+  p { margin: 0; }
+  a { color: inherit; }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  .container {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 12px;
+    padding: 10px 16px;
+    background: var(--accent);
+    color: var(--accent-contrast);
+    border-radius: var(--radius);
+    text-decoration: none;
+    z-index: 100;
+  }
+  .skip-link:focus { left: 24px; }
+
+  /* ---------- Header ---------- */
+
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    height: 68px;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+  }
+
+  .brand .mark {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: var(--accent);
+    color: var(--accent-contrast);
+    display: grid;
+    place-items: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.925rem;
+    font-weight: 500;
+    transition: color 0.15s ease;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  @media (max-width: 720px) {
+    .nav-links { display: none; }
+  }
+
+  /* ---------- Buttons ---------- */
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 20px;
+    border-radius: var(--radius);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 0.12s ease, background 0.15s ease, border-color 0.15s ease;
+  }
+  .btn:active { transform: translateY(1px); }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--accent-contrast);
+  }
+  .btn-primary:hover { background: color-mix(in srgb, var(--accent) 88%, var(--text)); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border-color: var(--border);
+  }
+  .btn-secondary:hover { border-color: var(--text-muted); }
+
+  /* ---------- Hero ---------- */
+
+  .hero {
+    position: relative;
+    padding: 96px 0 88px;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -220px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 760px;
+    height: 500px;
+    background: radial-gradient(circle, color-mix(in srgb, var(--accent) 22%, transparent), transparent 68%);
+    pointer-events: none;
+  }
+
+  .hero > .container { position: relative; }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 0.825rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.25rem, 6vw, 3.75rem);
+    font-weight: 700;
+    max-width: 16ch;
+    margin: 0 auto 20px;
+  }
+
+  .hero .lede {
+    font-size: clamp(1.05rem, 2.2vw, 1.2rem);
+    color: var(--text-muted);
+    max-width: 56ch;
+    margin: 0 auto 36px;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .terminal {
+    max-width: 620px;
+    margin: 56px auto 0;
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    text-align: left;
+    overflow: hidden;
+  }
+
+  .terminal-bar {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .terminal-bar span {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--border);
+  }
+
+  .terminal pre {
+    margin: 0;
+    padding: 20px 24px;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.875rem;
+    line-height: 1.8;
+    overflow-x: auto;
+  }
+
+  .terminal .prompt { color: var(--accent); }
+  .terminal .comment { color: var(--text-muted); }
+
+  /* ---------- Sections ---------- */
+
+  .section { padding: 88px 0; }
+  .section-soft { background: var(--bg-soft); border-block: 1px solid var(--border); }
+
+  .section-head {
+    max-width: 60ch;
+    margin: 0 auto 56px;
+    text-align: center;
+  }
+
+  .section-head h2 {
+    font-size: clamp(1.75rem, 4vw, 2.4rem);
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .section-head p { color: var(--text-muted); font-size: 1.05rem; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .card:hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--border)); transform: translateY(-2px); }
+
+  .card .icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    display: grid;
+    place-items: center;
+    margin-bottom: 18px;
+  }
+
+  .card h3 { font-size: 1.075rem; font-weight: 600; margin-bottom: 8px; }
+  .card p { color: var(--text-muted); font-size: 0.95rem; }
+
+  /* ---------- Steps ---------- */
+
+  .steps {
+    counter-reset: step;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 40px 32px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .steps li { counter-increment: step; }
+
+  .steps li::before {
+    content: counter(step, decimal-leading-zero);
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .steps h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 8px; }
+  .steps p { color: var(--text-muted); font-size: 0.95rem; }
+
+  /* ---------- CTA ---------- */
+
+  .cta {
+    text-align: center;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 64px 32px;
+    background:
+      radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 70%),
+      var(--bg-soft);
+  }
+
+  .cta h2 {
+    font-size: clamp(1.65rem, 4vw, 2.25rem);
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .cta p {
+    color: var(--text-muted);
+    max-width: 48ch;
+    margin: 0 auto 32px;
+  }
+
+  /* ---------- Footer ---------- */
+
+  .site-footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 0;
+    margin-top: 88px;
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .footer-links a { text-decoration: none; transition: color 0.15s ease; }
+  .footer-links a:hover { color: var(--text); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Aller au contenu</a>
+
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="#">
+      <span class="mark" aria-hidden="true">I</span>
+      Init
+    </a>
+    <nav aria-label="Navigation principale">
+      <ul class="nav-links">
+        <li><a href="#features">Fonctionnalités</a></li>
+        <li><a href="#how">Comment ça marche</a></li>
+        <li><a href="#start">Démarrer</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-primary" href="#start">Commencer</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">Nouveau — version 1.0</p>
+      <h1>Le point de départ de vos projets</h1>
+      <p class="lede">
+        Init met en place le socle dont chaque projet a besoin — structure, conventions
+        et outillage — pour que vous écriviez du code utile dès la première minute.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#start">Démarrer un projet</a>
+        <a class="btn btn-secondary" href="#features">Voir les fonctionnalités</a>
+      </div>
+
+      <div class="terminal">
+        <div class="terminal-bar" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+        <pre><code><span class="prompt">$</span> init mon-projet
+<span class="comment">✓ Structure créée</span>
+<span class="comment">✓ Conventions appliquées</span>
+<span class="comment">✓ Prêt à démarrer</span></code></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft" id="features">
+    <div class="container">
+      <div class="section-head">
+        <h2>Tout ce qu'il faut, rien de plus</h2>
+        <p>Un socle volontairement minimal, pensé pour ne pas vous encombrer.</p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <div class="icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>
+            </svg>
+          </div>
+          <h3>Prêt immédiatement</h3>
+          <p>Une commande, et le projet est en place. Aucune configuration à écrire avant de commencer.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+              <rect x="14" y="3" width="7" height="7" rx="1.5"/>
+              <rect x="3" y="14" width="7" height="7" rx="1.5"/>
+              <rect x="14" y="14" width="7" height="7" rx="1.5"/>
+            </svg>
+          </div>
+          <h3>Conventions cohérentes</h3>
+          <p>La même structure d'un projet à l'autre. On sait où trouver les choses, tout de suite.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3l8 4v5c0 4.5-3.2 8.3-8 9-4.8-.7-8-4.5-8-9V7l8-4z"/>
+              <path d="m9 12 2 2 4-4"/>
+            </svg>
+          </div>
+          <h3>Solide par défaut</h3>
+          <p>Les bons réglages sont déjà là. Vous les modifiez si besoin, pas parce qu'il le faut.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="how">
+    <div class="container">
+      <div class="section-head">
+        <h2>Comment ça marche</h2>
+        <p>Trois étapes entre l'idée et le premier commit.</p>
+      </div>
+
+      <ol class="steps">
+        <li>
+          <h3>Décrivez le projet</h3>
+          <p>Un nom, un type. Init s'occupe du reste et ne pose que les questions utiles.</p>
+        </li>
+        <li>
+          <h3>Init pose le socle</h3>
+          <p>Arborescence, fichiers de configuration et dépendances de base sont générés d'un coup.</p>
+        </li>
+        <li>
+          <h3>Vous codez</h3>
+          <p>Le projet démarre, se teste et se déploie sans étape de mise en route supplémentaire.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="start">
+    <div class="container">
+      <div class="cta">
+        <h2>Prêt à démarrer&nbsp;?</h2>
+        <p>Créez votre premier projet en une commande et jugez sur pièce.</p>
+        <a class="btn btn-primary" href="#">Commencer maintenant</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© 2026 Init. Tous droits réservés.</p>
+    <ul class="footer-links">
+      <li><a href="#features">Fonctionnalités</a></li>
+      <li><a href="#how">Comment ça marche</a></li>
+      <li><a href="#start">Démarrer</a></li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>
