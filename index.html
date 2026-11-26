@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="es">
 <head>s
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Init — Le point de départ de vos projets</title>
-<meta name="description" content="Init met en place le socle de vos projets : structure, conventions et outillage, prêts dès la première commande.">
+<title>Init — El punto de partida de tus proyectos</title>
+<meta name="description" content="Init prepara la base de tus proyectos: estructura, convenciones y herramientas, listas desde el primer comando.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -18,6 +18,8 @@
     --accent: #4f46e5;
     --accent-soft: #eef0fe;
     --accent-contrast: #ffffff;
+    --btn-primary: #dc2626;
+    --btn-primary-contrast: #ffffff;
     --radius: 12px;
     --maxw: 1080px;
     --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -33,6 +35,8 @@
       --accent: #8b8bf5;
       --accent-soft: #1b1b2e;
       --accent-contrast: #0e0e11;
+      --btn-primary: #f87171;
+      --btn-primary-contrast: #0e0e11;
     }
   }
 
@@ -161,10 +165,10 @@
   .btn:active { transform: translateY(1px); }
 
   .btn-primary {
-    background: var(--accent);
-    color: var(--accent-contrast);
+    background: var(--btn-primary);
+    color: var(--btn-primary-contrast);
   }
-  .btn-primary:hover { background: color-mix(in srgb, var(--accent) 88%, var(--text)); }
+  .btn-primary:hover { background: color-mix(in srgb, var(--btn-primary) 88%, var(--text)); }
 
   .btn-secondary {
     background: transparent;
@@ -403,7 +407,7 @@
 </head>
 <body>
 
-<a class="skip-link" href="#main">Aller au contenu</a>
+<a class="skip-link" href="#main">Ir al contenido</a>
 
 <header class="site-header">
   <div class="container nav">
@@ -411,15 +415,15 @@
       <span class="mark" aria-hidden="true">I</span>
       Init
     </a>
-    <nav aria-label="Navigation principale">
+    <nav aria-label="Navegación principal">
       <ul class="nav-links">
-        <li><a href="#features">Fonctionnalités</a></li>
-        <li><a href="#how">Comment ça marche</a></li>
-        <li><a href="avis.html">Avis</a></li>
-        <li><a href="#start">Démarrer</a></li>
+        <li><a href="#features">Funcionalidades</a></li>
+        <li><a href="#how">Cómo funciona</a></li>
+        <li><a href="avis.html">Opiniones</a></li>
+        <li><a href="#start">Empezar</a></li>
       </ul>
     </nav>
-    <a class="btn btn-primary" href="#start">Commencer</a>
+    <a class="btn btn-primary" href="#start">Comenzar</a>
   </div>
 </header>
 
@@ -427,25 +431,25 @@
 
   <section class="hero">
     <div class="container">
-      <p class="eyebrow">Nouveau — version 1.0</p>
-      <h1>Le point de départ de vos projets</h1>
+      <p class="eyebrow">Nuevo — versión 1.0</p>
+      <h1>El punto de partida de tus proyectos</h1>
       <p class="lede">
-        Init met en place le socle dont chaque projet a besoin — structure, conventions
-        et outillage — pour que vous écriviez du code utile dès la première minute.
+        Init prepara la base que todo proyecto necesita — estructura, convenciones
+        y herramientas — para que escribas código útil desde el primer minuto.
       </p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#start">Démarrer un projet</a>
-        <a class="btn btn-secondary" href="#features">Voir les fonctionnalités</a>
+        <a class="btn btn-primary" href="#start">Empezar un proyecto</a>
+        <a class="btn btn-secondary" href="#features">Ver las funcionalidades</a>
       </div>s
 
       <div class="terminal">
         <div class="terminal-bar" aria-hidden="true">
           <span></span><span></span><span></span>
         </div>
-        <pre><code><span class="prompt">$</span> init mon-projet
-<span class="comment">✓ Structure créée</span>
-<span class="comment">✓ Conventions appliquées</span>
-<span class="comment">✓ Prêt à démarrer</span></code></pre>
+        <pre><code><span class="prompt">$</span> init mi-proyecto
+<span class="comment">✓ Estructura creada</span>
+<span class="comment">✓ Convenciones aplicadas</span>
+<span class="comment">✓ Listo para empezar</span></code></pre>
       </div>
     </div>
   </section>
@@ -453,8 +457,8 @@
   <section class="section section-soft" id="features">
     <div class="container">
       <div class="section-head">
-        <h2>Tout ce qu'il faut, rien de plus</h2>
-        <p>Un socle volontairement minimal, pensé pour ne pas vous encombrer.</p>
+        <h2>Todo lo necesario, nada más</h2>
+        <p>Una base deliberadamente mínima, pensada para no estorbarte.</p>
       </div>
 
       <div class="grid">
@@ -464,8 +468,8 @@
               <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>
             </svg>
           </div>
-          <h3>Prêt immédiatement</h3>
-          <p>Une commande, et le projet est en place. Aucune configuration à écrire avant de commencer.</p>
+          <h3>Listo al instante</h3>
+          <p>Un comando y el proyecto está listo. Sin configuración que escribir antes de empezar.</p>
         </article>
 
         <article class="card">
@@ -477,8 +481,8 @@
               <rect x="14" y="14" width="7" height="7" rx="1.5"/>
             </svg>
           </div>
-          <h3>Conventions cohérentes</h3>
-          <p>La même structure d'un projet à l'autre. On sait où trouver les choses, tout de suite.</p>
+          <h3>Convenciones coherentes</h3>
+          <p>La misma estructura de un proyecto a otro. Sabes dónde encontrar las cosas, al momento.</p>
         </article>
 
         <article class="card">
@@ -488,8 +492,8 @@
               <path d="m9 12 2 2 4-4"/>
             </svg>
           </div>
-          <h3>Solide par défaut</h3>
-          <p>Les bons réglages sont déjà là. Vous les modifiez si besoin, pas parce qu'il le faut.</p>
+          <h3>Sólido por defecto</h3>
+          <p>Los ajustes adecuados ya están ahí. Los cambias si lo necesitas, no porque sea obligatorio.</p>
         </article>
       </div>
     </div>
@@ -498,22 +502,22 @@
   <section class="section" id="how">
     <div class="container">
       <div class="section-head">
-        <h2>Comment ça marche</h2>
-        <p>Trois étapes entre l'idée et le premier commit.</p>
+        <h2>Cómo funciona</h2>
+        <p>Tres pasos entre la idea y el primer commit.</p>
       </div>
 
       <ol class="steps">
         <li>
-          <h3>Décrivez le projet</h3>
-          <p>Un nom, un type. Init s'occupe du reste et ne pose que les questions utiles.</p>
+          <h3>Describe el proyecto</h3>
+          <p>Un nombre, un tipo. Init se encarga del resto y solo hace las preguntas útiles.</p>
         </li>
         <li>
-          <h3>Init pose le socle</h3>
-          <p>Arborescence, fichiers de configuration et dépendances de base sont générés d'un coup.</p>
+          <h3>Init prepara la base</h3>
+          <p>Estructura de carpetas, archivos de configuración y dependencias básicas se generan de una vez.</p>
         </li>
         <li>
-          <h3>Vous codez</h3>
-          <p>Le projet démarre, se teste et se déploie sans étape de mise en route supplémentaire.</p>
+          <h3>Tú programas</h3>
+          <p>El proyecto arranca, se prueba y se despliega sin pasos de puesta en marcha adicionales.</p>
         </li>
       </ol>
     </div>
@@ -522,9 +526,9 @@
   <section class="section" id="start">
     <div class="container">
       <div class="cta">
-        <h2>Prêt à démarrer&nbsp;?</h2>
-        <p>Créez votre premier projet en une commande et jugez sur pièce.</p>
-        <a class="btn btn-primary" href="#">Commencer maintenant</a>
+        <h2>¿Listo para empezar?</h2>
+        <p>Crea tu primer proyecto con un solo comando y compruébalo por ti mismo.</p>
+        <a class="btn btn-primary" href="#">Comenzar ahora</a>
       </div>
     </div>
   </section>
@@ -533,12 +537,12 @@ ss
 
 <footer class="site-footer">
   <div class="container footer-inner">
-    <p>© 2026 Init. Tous droits réservés.</p>
+    <p>© 2026 Init. Todos los derechos reservados.</p>
     <ul class="footer-links">
-      <li><a href="#features">Fonctionnalités</a></li>
-      <li><a href="#how">Comment ça marche</a></li>
-      <li><a href="avis.html">Avis</a></li>
-      <li><a href="#start">Démarrer</a></li>
+      <li><a href="#features">Funcionalidades</a></li>
+      <li><a href="#how">Cómo funciona</a></li>
+      <li><a href="avis.html">Opiniones</a></li>
+      <li><a href="#start">Empezar</a></li>
     </ul>
   </div>
 </footer>
